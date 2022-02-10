@@ -1,0 +1,138 @@
+
+<html lang=en>
+<head>
+<title>Two Hats Guessing Game</title>
+<style>
+    h1 { 
+        text-align:center;
+    }
+    table {
+        margin:auto; 
+        width:400px;
+    }
+    td {
+        width:50%;
+    }
+</style>
+<script>
+    var prisoner1Color = "Blue"
+    var prisoner2Color = "Blue"
+    function clearTheGuesses() {
+        document.getElementById("guess01").innerHTML = "";
+        document.getElementById("guess02").innerHTML = "";
+    }
+
+    function makeTheGuesses() {
+    prefix = "My hat color is ";
+    postfix = ".";
+        document.getElementById("guess01").innerHTML =
+            prefix +
+            prisoner2Color +
+            postfix;
+
+        document.getElementById("guess02").innerHTML = prefix;
+        if (prisoner1Color == "Red") {
+            document.getElementById("guess02").innerHTML += "Blue";
+        } else {
+            document.getElementById("guess02").innerHTML += "Red";
+        }
+        document.getElementById("guess02").innerHTML += postfix;
+    }
+
+    function changeImage1(){
+        document.getElementById("guess01").innerHTML = ""
+        document.getElementById("guess02").innerHTML = ""
+        if (document.getElementById("imgClickAndChange1").alt == "Prisoner 1 Blue Hat"  ){
+            document.getElementById("imgClickAndChange1").src = "p1Red.png"
+            document.getElementById("imgClickAndChange1").alt = "Prisoner 1 Red Hat"
+            console.log("Changes prisoner 1's hat to RED")
+            prisoner1Color = "Red"
+        }else{
+            document.getElementById("imgClickAndChange1").src = "p1Blue.png"
+            document.getElementById("imgClickAndChange1").alt = "Prisoner 1 Blue Hat"
+            console.log("Changes prisoner 1's hat to BLUE")
+            prisoner1Color = "Blue"
+        }
+    }
+    function changeImage2(){
+        document.getElementById("guess01").innerHTML = ""
+        document.getElementById("guess02").innerHTML = ""
+        if (document.getElementById("imgClickAndChange2").alt == "Prisoner 2 Blue Hat"  ){
+            document.getElementById("imgClickAndChange2").src = "p2Red.png"
+            document.getElementById("imgClickAndChange2").alt = "Prisoner 2 Red Hat"
+            prisoner2Color = "Red"
+            console.log("Changes prisoner 2's hat to RED")      
+        }else{
+            document.getElementById("imgClickAndChange2").src = "p2Blue.png"
+            document.getElementById("imgClickAndChange2").alt = "Prisoner 2 Blue Hat"
+            prisoner2Color = "Blue"
+            console.log("Changes prisoner 2's hat to BLUE")
+        }
+    }
+</script>
+</head>
+
+<body>
+<h1>Two Hats Prisoner Guessing Game</h1>
+
+<table>
+<tr>
+    <td style="text-align:left; vertical-align:top;">
+    Prisoner One
+    <br> 
+    <img src="./p1Blue.png" alt="Prisoner 1 Blue Hat" 
+    style="width: 50%;height:50%;" id="imgClickAndChange1" onclick="changeImage1()" >
+    
+
+    <td style="text-align:right; vertical-align:top;">
+    <label for="player02">Prisoner Two
+        <br>
+    </label>
+    <img src="p2Blue.png" alt="Prisoner 2 Blue Hat" 
+    style="width: 50%;height:50%;" id="imgClickAndChange2" onclick="changeImage2()">
+    
+    </td>
+</tr>
+<tr>
+    <td colspan=2 style="text-align:center;">
+    <button type="button" onclick="makeTheGuesses();">
+    Make Guess
+    </button>
+    <p>Click the prisoners to change hat color</p>
+    </td>
+</tr>
+<tr><td colspan=2><br><br></td></tr>
+<tr>
+    <td style="text-align:left;" id="guess01">
+    <!-- the guess for player01 will appear here -->
+    </td>
+
+    <td style="text-align:right;" id="guess02">
+    <!-- the guess for player02 will appear here -->
+    </td>
+</tr>
+<tr>
+    <td colspan=2 style="text-align:center;">
+        <br>
+    <p>Backstory:</p>
+    <p>You are a warden working at a high security prison when two felons comes into the prison.
+         You hate rule breakers so you are about to send them to the electric chair when you 
+         remember your mothers words, "try giving others a second chance".</p>
+    <p>
+        You decide to follow your mom's message but with a twist, they have to play a game. 
+        You will place either a red or blue hat on their heads, and they must not look at what 
+        color they are. The two prisoners will have one guess each and combined must get exactly 
+        one of the two guesses right to live.
+         They can not communicate, only guess based on the other prisoner's hat.
+
+    </p>
+    </td>
+</tr>
+</table>
+    
+
+
+
+
+</body>
+</html>
